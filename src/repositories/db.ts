@@ -24,7 +24,7 @@ const mongoURILocalhost: string = "mongodb://0.0.0.0:27017"
 const mongoURIAtlas: string = "mongodb+srv://admin:qwerty123@burni4.msgyuum.mongodb.net/?retryWrites=true&w=majority"
 
 
-const mongoUri = process.env.mongoURIAtlas || mongoURILocalhost;
+const mongoUri = mongoURIAtlas || mongoURILocalhost;
 export const client = new MongoClient(mongoUri)
 
 export const db = client.db("it-incubator-homework-blogs")

@@ -17,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/middlewares/query-params-parsing-middleware.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middlewares/validations.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/db.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/posts-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/posts-repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/types.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/users-repository.ts" beforeDir="false" />
@@ -109,7 +110,7 @@
       <updated>1667058893378</updated>
       <workItem from="1667058895828" duration="733000" />
       <workItem from="1667059822993" duration="2003000" />
-      <workItem from="1667070729932" duration="14715000" />
+      <workItem from="1667070729932" duration="14911000" />
     </task>
     <servers />
   </component>
