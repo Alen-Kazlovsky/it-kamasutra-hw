@@ -5,3 +5,6 @@
 /.idea/Homework_blogs.iml
 /.idea/modules.xml
 .env
+node_modules
+.idea
+dist
