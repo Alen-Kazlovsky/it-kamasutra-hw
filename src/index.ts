@@ -1,25 +1,33 @@
-import express, {Request, Response} from 'express'
-import {runDb} from "./db"
-import {blogsRouter} from "./routes/blogs-router"
-import {postsRouter} from "./routes/posts-router"
-import {removeAll} from "./common/autotest";
-import {usersRouter} from "./routes/users-router";
-import {authRouter} from "./routes/auth-router";
-import {testingRouter} from "./routes/testing-router";
+import express, { Request, Response } from "express"
+import bodyParser from 'body-parser'
+import {postsRouter} from "./routers/posts-router";
+import {blogsRouter} from "./routers/blogs-router";
+import {blogsRepository} from "./repositories/blogs-repository";
+import {postsRepository} from "./repositories/posts-repository";
+import {runDb} from "./repositories/db";
 
-export const app = express()
+const app = express()
+const port = process.env.PORT || 3000
+const parserMiddleware = bodyParser()
 
-app.use(express.json())
+app.use(parserMiddleware);
+
+app.use('/blogs', blogsRouter);
+app.use('/posts', postsRouter);
+
+app.get("/", (req: Request, res: Response) => {
+    res.send("Hello Homework [Blogs] from Artem Narchuk");
+})
 
 
-const port = process.env.PORT || 2000
+app.delete("/testing/all-data", (req: Request, res: Response) => {
 
+    blogsRepository.deleteAllBlogs()
+    postsRepository.deleteAllPosts()
 
-app.use('/blogs', blogsRouter)
-app.use('/posts', postsRouter)
-app.use('/users', usersRouter)
-app.use('/auth', authRouter)
-app.use('/testing', testingRouter)
+    res.sendStatus(204)
+
+})
 
 const startApp = async () => {
     await runDb()

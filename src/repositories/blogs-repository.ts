@@ -1,48 +1,45 @@
-import {blogsCollection} from "../db"
-import {BlogType} from "./types";
-import {Filter} from "mongodb";
-
-
-const searchNameTermFilter = (searchNameTerm: string | undefined | null): Filter<BlogType> => {
-    return {name: {$regex: searchNameTerm ? searchNameTerm : '', $options:'i'}}
-}
-
+import {blogsCollection, blogType} from "./db";
 
 export const blogsRepository = {
-    async findAllBlogs(searchNameTerm: any, pageSize: number, sortBy: any, sortDirection: any, pageNumber: any): Promise<BlogType[]> {
-        const filter = searchNameTermFilter(searchNameTerm)
-        const sortedBlogs = blogsCollection.find(filter, {projection: {_id: 0}}).skip((pageNumber - 1) * pageSize).limit(pageSize).sort({[sortBy]: sortDirection === 'asc' ? 1 : -1}).toArray()
-        return sortedBlogs
+    async findAllBlogs(): Promise<blogType[]>{
+        return blogsCollection.find({}, {projection:{_id:0}}).toArray();
     },
-    async findBlogById(id: any): Promise<BlogType | null> {
-        let blog: BlogType | null = await blogsCollection.findOne({id: id}, {projection: {_id: 0}})
-        return blog
-    },
-    async createBlog(newBlog: BlogType): Promise<BlogType> {
-        const {id, name, youtubeUrl, createdAt} = newBlog
-        await blogsCollection.insertOne({id, name, youtubeUrl, createdAt})
-        return newBlog
-    },
-    async updateBlogById(id: string, name: string, youtubeUrl: string) {
-        const result = await blogsCollection.updateMany({id: id}, {
-            $set: {
-                name: name,
-                youtubeUrl: youtubeUrl
+    async findBlogByID(id: string): Promise<blogType | null | void>{
+        const blog = await blogsCollection.findOne({id: id})
+        if(blog){
+            return {
+                id: blog?.id || "",
+                name : blog?.name || "",
+                youtubeUrl: blog?.youtubeUrl || "",
+                createdAt: blog?.createdAt || "",
             }
-        })
-        return result.matchedCount === 1
+        }
+        return null
     },
-    async deleteBlogById(id: string) {
+    async deleteBlogByID(id: string): Promise<boolean>{
         const result = await blogsCollection.deleteOne({id: id})
         return result.deletedCount === 1
     },
-    async getBlogsCount(searchNameTerm?: any) {
-        const filter = searchNameTermFilter(searchNameTerm)
-        return await blogsCollection.countDocuments(filter)
+    async createBlog(data: blogType): Promise<blogType>{
+        const newBlog: blogType = {
+            id: String(+new Date()),
+            name: data.name,
+            youtubeUrl: data.youtubeUrl,
+            createdAt: new Date().toISOString()
+        }
+        const newObjectBlog: blogType = Object.assign({}, newBlog);
+        await blogsCollection.insertOne(newBlog)
+
+        return newObjectBlog
     },
-    async deleteAllBlogs() {
-        return blogsCollection.deleteMany({})
+    async updateBlogByID(id: string, body: blogType): Promise<boolean>{
+        const result = await blogsCollection.updateOne({id: id}, {$set: {
+            name: body.name,
+            youtubeUrl: body.youtubeUrl}})
+        return result.matchedCount === 1
+    },
+    async deleteAllBlogs(): Promise<boolean>{
+        const result = await blogsCollection.deleteMany({})
+        return !!result.deletedCount
     }
 }
-
-
