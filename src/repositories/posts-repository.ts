@@ -1,58 +1,63 @@
-import {postsCollection, postType} from "./db";
-import {blogsRepository} from "./blogs-repository";
+import {postsCollection} from "../db";
+import {Filter} from "mongodb";
+import {PostType} from "./types";
+
 
 export const postsRepository = {
-    async findAllPosts(): Promise<postType[]>{
-        return postsCollection.find({}, {projection:{_id:0}}).toArray();
+        async findAllPosts(pageSize: number, sortBy: any, sortDirection: any, pageNumber: any): Promise<PostType[]> {
+            return await postsCollection.find( {},{projection:{_id:0}}).skip((pageNumber - 1) * pageSize).limit(pageSize).sort({[sortBy] : sortDirection === 'asc' ? 1 : -1}).toArray();
     },
-    async findPostByID(id: string): Promise<postType | null | void> {
-        const post = await postsCollection.findOne({id: id})
-        if (post) {
-            return {
-                id: post?.id || "",
-                title: post?.title || "",
-                shortDescription: post?.shortDescription || "",
-                content: post?.content || "",
-                blogId: post?.blogId || "",
-                blogName: post?.blogName || "",
-                createdAt: post?.createdAt || "",
+    async findPostById(id: string): Promise<PostType | null> {
+        const post = await postsCollection.findOne({id: id}, {projection: {_id: 0}})
+        return post;
+    },
+    async createPost(newPost: PostType): Promise<PostType | null> {
+        const {id, title, shortDescription, content, blogId, blogName, createdAt} = newPost
+        const result = await postsCollection.insertOne({
+            id,
+            title,
+            shortDescription,
+            content,
+            blogId,
+            blogName,
+            createdAt
+        })
+        return newPost;
+    },
+    async updatePostById(id: string, title: string, shortDescription: string, content: string, blogId: string): Promise<PostType | boolean> {
+        const result = await postsCollection.updateOne({id: id}, {
+            $set: {
+                title: title,
+                shortDescription: shortDescription,
+                content: content,
+                blogId: blogId
             }
-        }
-        return null
-    },
-    async deletePostByID(id: string): Promise<boolean>{
-            const result = await postsCollection.deleteOne({id: id})
-            return result.deletedCount === 1
-    },
-    async createPost(data: postType): Promise<postType>{
-
-        const blog = await blogsRepository.findBlogByID(data.blogId)
-
-        const newPost: postType = {
-            id: String(+new Date()),
-            title: data.title,
-            shortDescription: data.shortDescription,
-            content: data.content,
-            blogId: data.blogId,
-            blogName:  String(blog?.name),
-            createdAt: new Date().toISOString()
-        }
-        const newObjectPost: postType = Object.assign({}, newPost);
-        await postsCollection.insertOne(newPost)
-
-        return newObjectPost
-    },
-    async updatePostByID(id: string, body: postType): Promise<boolean>{
-        const result = await postsCollection.updateOne({id: id}, {$set: {
-            title: body.title,
-            shortDescription: body.shortDescription,
-            content: body.content,
-            blogId: body.blogId}})
-
+        })
         return result.matchedCount === 1
     },
-    async deleteAllPosts(): Promise<boolean>{
-        const result = await postsCollection.deleteMany({})
-        return !!result.deletedCount
+    async deletePostById(id: string): Promise<PostType | boolean> {
+        const result = await postsCollection.deleteOne({id: id})
+        return result.deletedCount === 1
+    },
+
+    // example
+    async findPostsByBlogId(blogId: string, pageNumber: number, pageSize: number, sortBy: string, sortDirection: string) {
+        return await postsCollection.find({blogId: blogId}, {projection: {_id: 0}})
+            .skip((pageNumber - 1) * pageSize)
+            .limit(pageSize)
+            .sort({[sortBy]: sortDirection === 'asc' ? 1 : -1})
+            .toArray()
+    },
+
+    // всего элементов - 50
+    // элементов на страние - 10 (pageSize)
+    // надо получить пятую страницу (последнюю) - pageNumber
+    // ( pageNumber (5) - 1) * pageSize
+
+    async getPostsCount(filter: Filter<PostType>) {
+        return postsCollection.countDocuments(filter)
+    },
+    async deleteAllPosts() {
+        return postsCollection.deleteMany({})
     }
 }
