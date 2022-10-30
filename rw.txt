@@ -1,3 +1,8 @@
 git add .
 git commit -am "sd"
 git push -f heroku master
+
+
+git init
+
+heroku git:remote -a alen-it-kamasutra-01-03
