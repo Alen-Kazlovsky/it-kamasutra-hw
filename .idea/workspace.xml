@@ -6,7 +6,17 @@
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/authorization-middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/input-blogs-validation-middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/input-posts-validation-middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/input-validation-middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/input-validation-middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/db.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/messages-repository.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/posts-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/posts-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/registered-users-repository.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/blogs-router.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/posts-router.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +95,7 @@
       <updated>1667058893378</updated>
       <workItem from="1667058895828" duration="733000" />
       <workItem from="1667059822993" duration="2003000" />
-      <workItem from="1667070729932" duration="10625000" />
+      <workItem from="1667070729932" duration="10931000" />
     </task>
     <servers />
   </component>
