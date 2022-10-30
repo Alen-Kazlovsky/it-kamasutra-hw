@@ -1,7 +1,7 @@
 import {MongoClient, ObjectId} from 'mongodb'
 import {BlogType, PostType, UserDBType} from "./repositories/types";
 
-const mongoUri = "mongodb+srv://solikamsk:solikamsk@cluster0.uu9g6jj.mongodb.net/?retryWrites=true&w=majority"
+const mongoUri = "mongodb+srv://cluster0.qduucnh.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
 
 
 const client = new MongoClient(mongoUri)
