@@ -22,7 +22,7 @@ export type blogType = {
 
 const mongoURILocalhost: string = "mongodb://0.0.0.0:27017"
 
-const mongoUri = process.env.mongoURIAtlas || mongoURILocalhost || "mongodb+srv://alen-borisov:<password>@cluster0.qduucnh.mongodb.net/?retryWrites=true&w=majority";
+const mongoUri = process.env.mongoURI || mongoURILocalhost || "mongodb+srv://alen-borisov:<password>@cluster0.qduucnh.mongodb.net/?retryWrites=true&w=majority";
 export const client = new MongoClient(mongoUri)
 
 export const db = client.db("it-incubator-homework-blogs")
