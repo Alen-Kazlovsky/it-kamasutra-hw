@@ -21,7 +21,7 @@ export type blogType = {
 }
 
 const mongoURILocalhost: string = "mongodb://0.0.0.0:27017"
-const mongoURIAtlas: string = "mongodb+srv://admin:qwerty123@burni4.msgyuum.mongodb.net/?retryWrites=true&w=majority"
+const mongoURIAtlas: string = "mongodb+srv://kamasutra:123@it-kamasutra.sij0zn8.mongodb.net/?retryWrites=true&w=majority"
 
 
 const mongoUri = mongoURIAtlas || mongoURILocalhost;
