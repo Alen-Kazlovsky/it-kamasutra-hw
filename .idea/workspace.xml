@@ -3,32 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f2da2f1-cf78-4b5f-9571-d8f6dd793fb3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/jwt-service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/settings.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/autotest.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/blogs-service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/posts-service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/users-service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/basic-auth-middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/input-validation-middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/input-validation-middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/query-params-parsing-middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/validations.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/blogs-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/posts-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/posts-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/users-repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/auth-router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/blogs-router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/feedbacks.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/posts-router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/testing-router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/users-router.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +32,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.start">
@@ -110,7 +84,8 @@
       <updated>1667058893378</updated>
       <workItem from="1667058895828" duration="733000" />
       <workItem from="1667059822993" duration="2003000" />
-      <workItem from="1667070729932" duration="16029000" />
+      <workItem from="1667070729932" duration="16561000" />
+      <workItem from="1667212421414" duration="3075000" />
     </task>
     <servers />
   </component>
